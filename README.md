@@ -1,0 +1,1 @@
+# git-github.com-leandrogm-dotnetcore-syncfusion-angular
