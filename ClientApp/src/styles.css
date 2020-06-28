@@ -11,4 +11,5 @@
 @import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
 @import '../node_modules/@syncfusion/ej2-angular-pivotview/styles/material.css';
 @import "../node_modules/@syncfusion/ej2-angular-navigations/styles/material.css";
-@import '../node_modules/@syncfusion/ej2-angular-diagrams/styles/material.css'
+@import '../node_modules/@syncfusion/ej2-angular-diagrams/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-dropdowns/styles/material.css';

@@ -21,6 +21,9 @@ import {DiagramAppComponent} from './diagram/diagram.component';
 import { ChartAllModule } from '@syncfusion/ej2-angular-charts';
 import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { RichTextComponent } from './rich-text/rich-text.component';
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 
 @NgModule({
@@ -40,7 +43,7 @@ import { RichTextComponent } from './rich-text/rich-text.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule, DiagramModule, TreeViewModule,
     FormsModule, DashboardLayoutModule, ButtonModule, PivotViewModule, ChartAllModule,
-    RichTextEditorModule,
+    RichTextEditorModule, AutoCompleteModule, RichTextEditorAllModule, DialogModule,
     RouterModule.forRoot([
       { path: '', component: DashboardLayout_State_Maintenance_Component, pathMatch: 'full' },
       { path: 'Pivottable_in_dashboard', component: Pivottable_in_dashboard_component},
