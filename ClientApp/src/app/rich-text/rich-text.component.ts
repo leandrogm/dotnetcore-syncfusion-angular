@@ -51,6 +51,7 @@ export class RichTextComponent {
   }
 
   public openDialog(): void {
+    this.autoCompleteObj.clear();
     this.isDialogOpen = true;
     this.ejDialog.show();
   };
@@ -62,7 +63,6 @@ export class RichTextComponent {
 
   onCreate(): void {
     const instance: any = this.rteObj;
-    const dialog = this.ejDialog;
     const self = this;
 
     instance.contentModule.getDocument().addEventListener("keydown", function (e: any): void {
@@ -100,7 +100,6 @@ export class RichTextComponent {
     this.ejDialog.hide();
     this.setCursorPosition();
     this.rteObj.executeCommand('insertText', e.itemData.description);
-    this.autoCompleteObj.clear();
   }
 
   setCursorPosition(): void {
