@@ -1,21 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { DiagramModule} from '@syncfusion/ej2-angular-diagrams';
-import { TreeViewModule} from '@syncfusion/ej2-angular-navigations';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { DashboardLayoutModule } from '@syncfusion/ej2-angular-layouts';
-import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
-import { PivotViewModule } from '@syncfusion/ej2-angular-pivotview';
-import { ChartAllModule } from '@syncfusion/ej2-angular-charts';
-import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
-import { RichTextComponent } from './rich-text/rich-text.component';
-import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
+import { HomeComponent } from './home/home.component';
+import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
+import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
+import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { RichTextComponent } from './rich-text/rich-text.component';
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { AutoCompleteModule } from '@syncfusion/ej2-angular-dropdowns';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
 
@@ -23,16 +21,22 @@ import { DialogModule } from '@syncfusion/ej2-angular-popups';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    RichTextComponent
+    HomeComponent,
+    RichTextComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule, RichTextEditorModule, AutoCompleteModule, RichTextEditorAllModule, DialogModule,
+    HttpClientModule,
+    FormsModule,
+    ApiAuthorizationModule,
+    RichTextEditorModule, AutoCompleteModule, RichTextEditorAllModule, DialogModule,
     RouterModule.forRoot([
       { path: '', component: RichTextComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
