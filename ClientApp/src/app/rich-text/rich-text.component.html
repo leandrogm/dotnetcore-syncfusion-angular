@@ -1,8 +1,20 @@
-<div class="control-section">
-  <div class="sample-container">
-      <div class="default-section">
-          <ejs-richtexteditor #tributeRTE id='tributeRTE' (created)='onCreate()' placeholder='Insira o texto aqui e digite @ para mostrar a lista de doenças'>
-          </ejs-richtexteditor>
-      </div>
+<div class="richtext-container">
+  <div>
+    <ejs-richtexteditor #sample id='defaultRTE' [(value)]='value' (created)="onCreate($event)">
+      <ng-template #container class='root-container'>
+
+      </ng-template>
+    </ejs-richtexteditor>
   </div>
+
+  <ejs-dialog id='dialog' #ejDialog
+              [target]='targetElement'
+              width='250px'
+              [visible]="isDialogOpen">
+    <ejs-autocomplete #autocomplete id='atcelement'
+                      [dataSource]='autoCompleteData'
+                      [fields]='fields'
+                      (select)="onSelect($event)">
+    </ejs-autocomplete>
+  </ejs-dialog>
 </div>
